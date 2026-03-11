@@ -11,6 +11,6 @@ def startup():
     bot_thread.start()
     
 
-@app.get("/health")
+@app.head("/head")
 def health():
     return {"status": "ok"}

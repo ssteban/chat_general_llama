@@ -59,6 +59,7 @@ def bot_init():
             else:
                 print(f"Respuesta enviada a {user}")
                 bot.reply_to(message, respuesta)
+                
         except Exception as e:
             print(f"Error al responder: {e}")
             bot.reply_to(message, "Lo siento, tuve un problema interno. Inténtalo de nuevo más tarde.")
