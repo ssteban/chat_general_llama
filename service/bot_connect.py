@@ -16,7 +16,11 @@ def responder(mensaje):
             mensaje=mensaje,
             api_name="/responder",
         )
-        return recortar_respuesta(result)
+        if isinstance(result, str):
+            return recortar_respuesta(result)
+        else:
+            print(f"Resultado inesperado de Gradio: {type(result)}")
+            return str(result)
     except Exception as e:
         print(f"Error durante la predicción: {e}")
         return "Hubo un error al procesar tu pregunta. Por favor, inténtalo de nuevo."

@@ -50,8 +50,15 @@ def bot_init():
         try:
             bot.send_message(message.chat.id, "Procesando tu pregunta...", reply_to_message_id=message.message_id)
             bot.send_chat_action(message.chat.id, 'typing')
+            print(f"Obteniendo respuesta para: {message.text}")
             respuesta = responder(message.text)
-            bot.reply_to(message, respuesta)
+            
+            if not respuesta or respuesta.strip() == "":
+                print("ADVERTENCIA: La respuesta de la IA está vacía.")
+                bot.reply_to(message, "Lo siento, la IA no pudo generar una respuesta en este momento. Intenta reformular tu pregunta.")
+            else:
+                print(f"Respuesta enviada a {user}")
+                bot.reply_to(message, respuesta)
         except Exception as e:
             print(f"Error al responder: {e}")
             bot.reply_to(message, "Lo siento, tuve un problema interno. Inténtalo de nuevo más tarde.")
