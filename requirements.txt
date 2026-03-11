@@ -1,0 +1,6 @@
+fastapi
+pyTelegramBotAPI
+python-dotenv
+gradio_client
+uvicorn
+gunicorn
