@@ -48,6 +48,8 @@ def bot_init():
         print(f"Mensaje de {user}: {message.text}")
         
         try:
+            bot.send_message(message.chat.id, "Procesando tu pregunta...", reply_to_message_id=message.message_id)
+            bot.send_chat_action(message.chat.id, 'typing')
             respuesta = responder(message.text)
             bot.reply_to(message, respuesta)
         except Exception as e:
